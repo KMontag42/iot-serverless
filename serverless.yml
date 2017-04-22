@@ -1,0 +1,20 @@
+service: serverless-simple-http-endpoint
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+package:
+  include:
+    - node_modules/
+
+functions:
+  iot:
+    handler: handler.endpoint
+    events:
+      - http:
+          path: iot
+          method: get
+          cors: true
